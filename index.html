@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokatajans - Sosyal Medya Sayfalarımız</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <style>
+        /* Şablon Renklerinden Türetilen Palet */
+        :root {
+            --color-dark-blue: #1A374D; /* Şablondaki koyu mavi */
+            --color-orange-yellow: #FFC300; /* Şablondaki turuncu/sarı köşe */
+            --color-white: #FFFFFF;
+            --color-text-dark: #333333; /* Metin için koyu renk */
+	    --color-instagram-pink: linear-gradient(to right, #833AB4, #FD1D1D, #FEDA77); /* Instagram'ın gradyanı */
+            --color-youtube-red: #CD201F; /* YouTube'a özel renk */
+            --color-construction-red: #E74C3C; /* Yapım Aşamasında metni için kırmızı */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #dbe1e7; 
+            color: var(--color-text-dark);
+            display: flex;
+            flex-direction: column; /* Ana içeriği ve banner'ı dikeyde hizalamak için */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* YENİ EKLEME: Yapım Aşamasında Banner Stili */
+        .construction-banner {
+            background-color: var(--color-construction-red);
+            color: var(--color-white);
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px; /* Ana kutudan ayırmak için */
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px; 
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* İkon ile yazı arasına boşluk */
+        }
+        /* YENİ EKLEME BİTİŞ */
+
+        .main-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px; 
+            background-color: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            height: 60px;
+            background-color: var(--color-dark-blue);
+        }
+
+        .header-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 120px 120px 0; 
+            border-color: transparent var(--color-orange-yellow) transparent transparent;
+            transform: rotate(0deg);
+        }
+
+        .logo-small {
+            position: absolute;
+            top: 15px; 
+            right: 15px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--color-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-small img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 50%;
+        }
+
+        .content-area {
+            flex-grow: 1;
+            padding: 40px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--color-dark-blue);
+            border-top: none;
+            border-bottom: none;
+            margin: 0 20px;
+            margin-top: -1px;
+            margin-bottom: -1px;
+        }
+        
+        .content-area h1 {
+            font-size: 2rem;
+            color: var(--color-text-dark);
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+        .content-area p {
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            margin-bottom: 30px;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            gap: 10px;
+        }
+
+        .social-link:hover {
+            background-color: #2F5370;
+            transform: translateY(-2px);
+        }
+
+        .social-link:active {
+            transform: translateY(0);
+        }
+
+	/* Instagram'a özel gradyan rengi */
+        .social-link.instagram {
+            background: var(--color-instagram-pink); /* Gradyan arka plan */
+            color: var(--color-white);
+        }
+
+        .social-link.instagram:hover {
+            opacity: 0.9; /* Hafif şeffaflık ile hover efekti */
+            transform: translateY(-2px);
+        }
+
+
+        /* YouTube'a özel renk */
+        .social-link.youtube {
+            background-color: var(--color-youtube-red);
+        }
+        .social-link.youtube:hover {
+            background-color: #E6382F;
+        }
+
+        /* Next Sosyal için vurgu rengi */
+        .social-link.next-social {
+            background-color: var(--color-orange-yellow);
+            color: var(--color-dark-blue);
+        }
+
+        .social-link.next-social:hover {
+            background-color: #FFD54F;
+        }
+
+        .footer-bottom {
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around; /* Ortadan biraz daha yayılmış */
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom .social-icons a {
+            color: var(--color-white);
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom .social-icons a:hover {
+            color: var(--color-orange-yellow);
+        }
+
+        .footer-bottom .website-link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom .website-link:hover {
+            color: var(--color-orange-yellow);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="construction-banner">
+        <i class="fas fa-tools"></i> SAYFAMIZ YAPIM AŞAMASINDADIR <i class="fas fa-tools"></i>
+    </div>
+    <div class="main-wrapper">
+        <div class="header-top">
+            <div class="header-corner"></div>
+            <div class="logo-small">
+                <img src="540081007_1453566819595664_9125497926632396136_n.jpg" alt="Tokatajans Logo">
+            </div>
+        </div>
+
+        <div class="content-area">
+            <h1>TOKAT AJANS</h1>
+            <p>Tüm güncel içeriklerimiz ve haberlerimiz için sosyal medya sayfalarımızı takip edin!</p>
+
+             <div class="social-buttons">
+                <a href="https://instagram.com/tokatajans" target="_blank" class="social-link instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+                <a href="https://facebook.com/tokatajans" target="_blank" class="social-link">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+
+                <a href="https://youtube.com/@tokatajans" target="_blank" class="social-link youtube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+
+                <a href="https://sosyal.teknofest.app/@tokatajans" target="_blank" class="social-link next-social">
+                    <i class="fas fa-link"></i> Next Sosyal
+                </a>
+            </div>
+
+	    
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="https://instagram.com/tokatajans" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/tokatajans" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@tokatajans" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://sosyal.teknofest.app/@tokatajans" target="_blank" aria-label="Next Sosyal"><i class="fas fa-link"></i></a>
+            </div>
+            <a href="https://www.tokatajans.com" target="_blank" class="website-link">www.tokatajans.com</a>
+        </div>
+    </div>
+
+</body>
+</html>
